@@ -1,6 +1,6 @@
 # Proxies を使用した pip の利用方法
 
-[![Promo](https://github.com/luminati-io/LinkedIn-Scraper/raw/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.jp/) 
+[![Promo](https://github.com/bright-jp/LinkedIn-Scraper/raw/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.jp/) 
 
 このガイドでは、制限を回避し、セキュリティを向上させ、パッケージ管理を効率化するために、pip でプロキシを設定する方法を説明します。
 
@@ -42,7 +42,7 @@ pip でプロキシを使用する前に、プロキシに関する関連情報�
 
 `proxy-list` repo 内で、動作する public proxy を見つけるには [`proxy-list-status.txt`](https://github.com/clarketm/proxy-list/blob/master/proxy-list-status.txt) ファイルを確認してください。ファイル内で、隣に `success` フラグが付いているアドレスを探すことで、動作していることを示すものを確認できます。
 
-![Selecting a public proxy](https://github.com/luminati-io/pip-with-proxy/blob/main/Images/Selecting-a-public-proxy.png)
+![Selecting a public proxy](https://github.com/bright-jp/pip-with-proxy/blob/main/Images/Selecting-a-public-proxy.png)
 
 このチュートリアルでは、public proxy address として `45.185.162.203:999` を使用します。これはプロキシサーバーアドレスが `http://45.185.162.203:999` であることを意味します。
 
@@ -277,17 +277,17 @@ Bright Data は、レジデンシャル、データセンター、モバイル�
 
 サイドメニューで **Proxies & Scraping** をクリックします。
 
-![Bright Data proxies](https://github.com/luminati-io/pip-with-proxy/blob/main/Images/Bright-Data-proxies-2048x1041.png)
+![Bright Data proxies](https://github.com/bright-jp/pip-with-proxy/blob/main/Images/Bright-Data-proxies-2048x1041.png)
 
 フォームが読み込まれたら、新しい residential proxy を設定します。デフォルト設定を使用すると、複数の Bright Data ユーザーによって使用される共有 IPアドレス が割り当てられます。
 
-![Creating a residential proxy](https://github.com/luminati-io/pip-with-proxy/blob/main/Images/Creating-a-residential-proxy-2048x1040.png)
+![Creating a residential proxy](https://github.com/bright-jp/pip-with-proxy/blob/main/Images/Creating-a-residential-proxy-2048x1040.png)
 
 特定の地域の IPアドレス が必要な場合は、セットアップ中に希望する国を選択できます。
 
 プロキシが作成されると、エンドポイントと認証の詳細を表示するダッシュボードにリダイレクトされます。username、password、server address を必ず控えておいてください。
 
-![Proxy dashboard](https://github.com/luminati-io/pip-with-proxy/blob/main/Images/Proxy-dashboard-2048x1040.png)
+![Proxy dashboard](https://github.com/bright-jp/pip-with-proxy/blob/main/Images/Proxy-dashboard-2048x1040.png)
 
 `--proxy` フラグを使用して、endpoint values の可用性をテストしてください。
 
