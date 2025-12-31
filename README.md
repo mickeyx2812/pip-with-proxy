@@ -1,8 +1,8 @@
-# Using pip with Proxies
+# Proxies を使用した pip の利用方法
 
-[![Promo](https://github.com/luminati-io/LinkedIn-Scraper/raw/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.com/) 
+[![Promo](https://github.com/luminati-io/LinkedIn-Scraper/raw/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.jp/) 
 
-This guide explains how to set up proxies with pip to bypass restrictions, improve security, and streamline package management:
+このガイドでは、制限を回避し、セキュリティを向上させ、パッケージ管理を効率化するために、pip でプロキシを設定する方法を説明します。
 
 - [Public vs Private Proxies](#public-vs-private-proxies)
 - [Using Proxies with pip](#using-proxies-with-pip)
@@ -21,126 +21,126 @@ This guide explains how to set up proxies with pip to bypass restrictions, impro
 
 ### Public Proxies
 
-Public proxies are accessible to anyone and typically do not require authentication. While they offer a quick way to use an alternative IP address, they have notable drawbacks, including slower speeds, unstable connections, and a higher risk of IP bans. Their free and widespread availability often means they lack key features such as proxy rotation, caching, and access control, making them unsuitable for reliable use in a production environment.
+Public proxy は誰でもアクセスでき、通常は認証を必要としません。代替 IPアドレス を素早く利用できる一方で、速度が遅い、接続が不安定、IP ban のリスクが高いなどの明確な欠点があります。無料で広く入手できることが多いため、プロキシローテーション、キャッシュ、アクセス制御といった主要機能が欠けていることが多く、本番環境での信頼性の高い利用には適していません。
 
-A public URL may be formatted like this: `https://proxyserver:port`.
+public URL は次のような形式になる場合があります: `https://proxyserver:port`。
 
 ### Private Proxies
 
-[Private proxies](https://brightdata.com/solutions/private-proxies) require authentication, providing enhanced security, stability, and advanced features, though they often come at a price. They deliver a fast, reliable connection to a [dedicated IP address](https://brightdata.com/solutions/dedicated-proxies) and include functionalities such as proxy authentication and rotation for improved performance and control.
+[Private proxies](https://brightdata.jp/solutions/private-proxies) は認証を必要とし、より高いセキュリティ、安定性、高度な機能を提供しますが、一般的に費用がかかります。高速で信頼性の高い接続を [dedicated IP address](https://brightdata.jp/solutions/dedicated-proxies) に対して提供し、パフォーマンスと制御を向上させるためのプロキシ認証やローテーションなどの機能を含みます。
 
-Access is usually controlled through authentication often by including a username and password as a prefix to the proxy URL like this: `https://username:password@proxyserver:port`.
+通常、アクセスは認証によって制御され、次のようにプロキシ URL の接頭辞として username と password を含めることがよくあります: `https://username:password@proxyserver:port`。
 
 ## Using Proxies with pip
 
-Before using a proxy with pip, you need to collect relevant details about your proxy. The following example demonstrates how to use a public proxy with these settings:
+pip でプロキシを使用する前に、プロキシに関する関連情報を収集する必要があります。次の例では、以下の設定で public proxy を使用する方法を示します。
 
-- A **proxy address** for the proxy service
-- The **port** the proxy service requires for communication
+- プロキシサービスの **proxy address**
+- 通信に必要なプロキシサービスの **port**
 
-The [following `proxy-list` repo](https://github.com/clarketm/proxy-list) provides daily tested public proxy addresses that can be useful for testing but should not be used in production environments.
+次の [`proxy-list` repo](https://github.com/clarketm/proxy-list) は、毎日テストされた public proxy address を提供しており、テストには便利ですが、本番環境では使用しないでください。
 
-Within the `proxy-list` repo, check the [`proxy-list-status.txt`](https://github.com/clarketm/proxy-list/blob/master/proxy-list-status.txt) file to find a working public proxy. This can be done by checking the file for an address that has the `success` flag next to it, indicating that it is working:
+`proxy-list` repo 内で、動作する public proxy を見つけるには [`proxy-list-status.txt`](https://github.com/clarketm/proxy-list/blob/master/proxy-list-status.txt) ファイルを確認してください。ファイル内で、隣に `success` フラグが付いているアドレスを探すことで、動作していることを示すものを確認できます。
 
 ![Selecting a public proxy](https://github.com/luminati-io/pip-with-proxy/blob/main/Images/Selecting-a-public-proxy.png)
 
-For this tutorial, use `45.185.162.203:999` as your public proxy address. This means the proxy server address is `http://45.185.162.203:999`.
+このチュートリアルでは、public proxy address として `45.185.162.203:999` を使用します。これはプロキシサーバーアドレスが `http://45.185.162.203:999` であることを意味します。
 
 ## Configuring a pip Proxy with the Command Line
 
-The quickest way you can configure a pip proxy is to pass in the address when calling the `pip install` command using the `--proxy` command line option.
+pip プロキシを設定する最も速い方法は、`pip install` コマンドを呼び出す際に、`--proxy` コマンドラインオプションでアドレスを渡すことです。
 
-To verify access through the public proxy and test package retrieval, run the following command:
+public proxy 経由でのアクセスを確認し、パッケージ取得をテストするには、次のコマンドを実行してください。
 
 ```
 # Public Proxy
 pip install boto3 --proxy http://45.185.162.203:999
 ```
 
-This approach is useful for quickly testing and validating proxies before configuring them permanently. For those publishing pip packages, it also helps confirm availability from a different IP address.
+この方法は、プロキシを恒久的に設定する前に、素早くテストして検証するのに便利です。pip パッケージを公開する場合にも、別の IPアドレス からの可用性を確認するのに役立ちます。
 
 ## Configuring a pip Proxy with the pip Config File
 
-To permanently configure a pip proxy, the pip config file is an easy and declarative solution. Its location depends on your operating system and can be found in the following directories:
+pip プロキシを恒久的に設定するには、pip config file が簡単で宣言的なソリューションです。場所は OS に依存し、次のディレクトリで見つかります。
 
-- **Global:** System-wide configuration file, shared across users.
-- **User:** Per-user configuration file for the user executing the pip process.
-- **Site:** Per-environment configuration file using Python virtual environments.
+- **Global:** システム全体の設定ファイルで、ユーザー間で共有されます。
+- **User:** pip プロセスを実行するユーザーごとの設定ファイルです。
+- **Site:** Python virtual environments を使用する環境ごとの設定ファイルです。
 
-These configuration files can be found or created in the following locations for each system:
+これらの設定ファイルは、各システムで以下の場所に存在するか、作成できます。
 
 ### Linux/macOS
 
-On Linux and macOS, the pip config file is called `pip.conf` and can be found in the following locations:
+Linux と macOS では、pip config file は `pip.conf` と呼ばれ、以下の場所にあります。
 
 - **Global:**
-    - **Debian-based systems:** Edit or create `pip.conf in the`/etc\` directory.
-    - **macOS-based systems:** Edit or create `/Library/Application Support/pip/pip.conf`.
+    - **Debian-based systems:** `/etc\` ディレクトリ内の `pip.conf in the` を編集または作成します。
+    - **macOS-based systems:** `/Library/Application Support/pip/pip.conf` を編集または作成します。
 - **User:**
-    - **Debian-based systems:** Edit or create the `~/pip/pip.conf` file.
-    - **macOS-based systems:** Edit or create the `~/.config/pip/pip.conf` config file.
-- **Site:** When loaded in a Python virtual environment, it’s located at `$VIRTUAL_ENV/pip.conf`.
+    - **Debian-based systems:** `~/pip/pip.conf` ファイルを編集または作成します。
+    - **macOS-based systems:** `~/.config/pip/pip.conf` config file を編集または作成します。
+- **Site:** Python virtual environment で読み込まれる場合、`$VIRTUAL_ENV/pip.conf` にあります。
 
 ### Windows
 
-On Windows systems, the file is a `pip.ini` and can be found in the following locations:
+Windows では、ファイルは `pip.ini` で、以下の場所にあります。
 
-- **Global:** Edit or create the `C:\ProgramData\pip\pip.ini` file. Note that this file is hidden by default on Windows systems but is writable.
-- **User:** Edit or create `pip.ini` in `%APPDATA%\pip\`.
-- **Site:** When loaded in a Python virtual environment, edit or create the config file at `%VIRTUAL_ENV%\pip.ini`.
+- **Global:** `C:\ProgramData\pip\pip.ini` ファイルを編集または作成します。このファイルは Windows ではデフォルトで非表示ですが、書き込み可能です。
+- **User:** `%APPDATA%\pip\` に `pip.ini` を編集または作成します。
+- **Site:** Python virtual environment で読み込まれる場合、`%VIRTUAL_ENV%\pip.ini` にある config file を編集または作成します。
 
 ### Config File Contents
 
-This examples assumes using a Python virtual environment pip config file. In an activated virtual environment, edit `$VIRTUAL_ENV/pip.conf` on Debian-based systems or `%VIRTUAL_ENV%\pip.ini` on Windows.
+この例では、Python virtual environment の pip config file を使用することを前提とします。有効化された virtual environment で、Debian-based systems では `$VIRTUAL_ENV/pip.conf` を、Windows では `%VIRTUAL_ENV%\pip.ini` を編集してください。
 
-In the config file, you need to update the `proxy` key with your desired HTTP or HTTPS proxy:
+config file では、`proxy` キーを目的の HTTP または HTTPS プロキシに更新する必要があります。
 
 ```
 [global]
 proxy = http://45.185.162.203:999
 ```
 
-After saving the file, the proxy will be applied automatically to all pip commands, removing the need to specify the proxy flag each time:
+ファイルを保存すると、プロキシはすべての pip コマンドに自動的に適用され、毎回プロキシフラグを指定する必要がなくなります。
 
 ```bash
 (venv) $ pip install boto3
 ```
 
-For more details on configuration options please see the [project’s documentation](https://pip.pypa.io/en/stable/topics/configuration/).
+設定オプションの詳細については、[project’s documentation](https://pip.pypa.io/en/stable/topics/configuration/) を参照してください。
 
 ## Configuring a pip Proxy with Environment Variables
 
-Configuring system environment variables ensures that a proxy is used for pip and all other HTTP requests on the system. This is achieved by setting the `HTTP_PROXY` and `HTTPS_PROXY` variables, which many applications, including pip, rely on as the system's default proxy for handling HTTP requests.
+システム環境変数を設定すると、pip およびシステム上の他のすべての HTTP リクエストでプロキシが使用されるようになります。これは `HTTP_PROXY` と `HTTPS_PROXY` 変数を設定することで実現でき、pip を含む多くのアプリケーションが、HTTP リクエストを処理するためのシステム既定プロキシとしてこれらに依存しています。
 
 ### Linux/macOS
 
-If you’re using a Linux operating system, update the `/etc/environment` file, or if you’re a macOS user, update the `.zshrc` file located in the home directory. Then, update it with new entries for your proxy server:
+Linux OS を使用している場合は `/etc/environment` ファイルを更新するか、macOS の場合はホームディレクトリにある `.zshrc` ファイルを更新してください。その後、プロキシサーバーの新しいエントリを追加します。
 
 ```
 HTTP_PROXY=https://proxyserver:port
 HTTPS_PROXY=https://proxyserver:port
 ```
 
-Resteart your terminal session or the system, and the environment variables will be present.
+ターミナルセッションまたはシステムを再起動すると、環境変数が反映されます。
 
 ### Windows
 
-On a Windows system, you can set environment variables with the following commands in a command prompt terminal:
+Windows では、コマンドプロンプトで次のコマンドを使用して環境変数を設定できます。
 
 ```
 setx HTTP_PROXY "https://proxyserver:port" /M
 setx HTTPS_PROXY "https://proxyserver:port" /M
 ```
 
-Restart the command prompt for the changes to take effect.
+変更を反映するためにコマンドプロンプトを再起動してください。
 
 ## Testing the Configuration
 
-After setting up a system-level configuration using either the pip config file or environment variables, test the proxy to ensure it can successfully connect and transmit data.
+pip config file または環境変数のいずれかでシステムレベルの設定を行った後、プロキシが正常に接続してデータを送受信できることを確認するためにテストしてください。
 
 ### Linux/macOS
 
-On Linux/macOS, use the following command:
+Linux/macOS では、次のコマンドを使用します。
 
 ```bash
 $ python -m venv venv
@@ -150,18 +150,18 @@ $ source venve/scripts/activate
 (venv) $ pip install requests
 ```
 
-If you ever want to override these settings with a specific proxy, you can fall back on using the CLI flags:
+特定のプロキシでこれらの設定を上書きしたい場合は、CLI フラグを使用できます。
 
 ```bash
 # pip cli flag
 (venv) $ pip install requests --proxy https://proxyserver:port
 ```
 
-In this command, make sure you update `https://proxyserver:port` with your own proxy.
+このコマンドでは、必ず `https://proxyserver:port` をご自身のプロキシに更新してください。
 
 ### Windows
 
-On Windows, use the following command:
+Windows では、次のコマンドを使用します。
 
 ```powershell
 > python -m venv venv
@@ -169,7 +169,7 @@ On Windows, use the following command:
 (venv) > pip install requests
 ```
 
-These settings can always be overridden using the pip CLI flags:
+これらの設定は、pip CLI フラグでいつでも上書きできます。
 
 ```bash
 # pip cli flag
@@ -178,25 +178,25 @@ These settings can always be overridden using the pip CLI flags:
 
 ### Troubleshooting pip Proxies
 
-When connecting to an HTTP or HTTPS proxy with pip, you may come across the following common issues, particularly if you explore using private proxies or HTTPS proxies due to their enhanced features.
+pip で HTTP または HTTPS プロキシに接続する際、特に高度な機能を持つ private proxy や HTTPS プロキシの利用を検討する場合、次の一般的な問題に遭遇することがあります。
 
 #### Authentication Issues
 
-Authentication issues are commonly seen as a `407 Proxy Authentication Required` error when trying to connect to the proxy with pip. This indicates that the proxy requires a username and password to connect or you have provided the wrong credentials for the proxy.
+認証の問題は、pip でプロキシに接続しようとした際に `407 Proxy Authentication Required` エラーとしてよく現れます。これは、プロキシが接続に username と password を必要としているか、プロキシに対して誤った認証情報を提供していることを示します。
 
 #### Certificate Issues
 
-When connecting to an HTTPS proxy, you may receive a `Certificate verify failed` error from pip. This indicates that there is an issue with the certificate provided by the proxy server.
+HTTPS プロキシに接続する際、pip から `Certificate verify failed` エラーを受け取ることがあります。これは、プロキシサーバーが提供する証明書に問題があることを示します。
 
-If your private proxy server uses a self-signed certificate, you may encounter an error due to the certificate not being verified by a certificate authority. To bypass this, consider using the `--trusted-host` CLI option when connecting to specific domains to ignore self-signed certificate errors.
+private proxy server が自己署名証明書を使用している場合、証明書が認証局によって検証されないためにエラーが発生することがあります。これを回避するには、特定ドメインへの接続時に自己署名証明書エラーを無視するため、`--trusted-host` CLI オプションの使用を検討してください。
 
 ## Using pip with Rotating Proxies
 
-[Rotating proxies](https://brightdata.com/solutions/rotating-proxies) help avoid IP bans by automatically switching IP addresses for each request. This mimics multiple users and bypasses restrictions.
+[Rotating proxies](https://brightdata.jp/solutions/rotating-proxies) は、リクエストごとに IPアドレス を自動的に切り替えることで IP ban を回避するのに役立ちます。これは複数ユーザーを模倣し、制限を回避します。
 
-You can implement this by randomly selecting proxies from a list. Below is a simple bash script that installs pip packages while rotating through public proxies.
+これは、リストからランダムにプロキシを選択することで実装できます。以下は、public proxy をローテーションしながら pip パッケージをインストールする簡単な bash script です。
 
-Create the following bash script called `rotate-proxies.sh`:
+次の bash script を `rotate-proxies.sh` という名前で作成してください。
 
 ```bash
 proxy_list=(
@@ -221,7 +221,7 @@ do
 done
 ```
 
-After creating the file, you can run it to download pip packages while rotating through a random proxy for each pip command. Below is a summary of the script’s output:
+ファイル作成後、実行すると、各 pip コマンドごとにランダムなプロキシをローテーションしながら pip パッケージをダウンロードできます。以下はスクリプト出力の要約です。
 
 ```
 $ ./rotate-proxies.sh 
@@ -257,39 +257,39 @@ Successfully installed pandas-2.2.3 python-dateutil-2.9.0.post0 pytz-2025.1 six-
 
 ## Benefits of Using Proxies with pip
 
-Proxies enable developers to bypass network restrictions, access blocked resources, and optimize package download speeds. Private proxies enhance security by masking identity while also offering caching and faster connections.
+プロキシにより、開発者はネットワーク制限を回避し、ブロックされたリソースへアクセスし、パッケージのダウンロード速度を最適化できます。private proxy は、アイデンティティを隠すことでセキュリティを強化しつつ、キャッシュや高速接続も提供します。
 
-[Unlike VPNs](https://brightdata.com/blog/proxy-101/vpn-vs-proxy), which encrypt all internet traffic for greater privacy but may introduce latency, proxies serve as a lightweight alternative for pip requests. They provide a faster and more efficient way to manage dependencies without the performance overhead of a VPN.
+すべてのインターネットトラフィックを暗号化してプライバシーを高める一方で遅延を生む可能性がある [VPNs](https://brightdata.jp/blog/proxy-101/vpn-vs-proxy) と異なり、プロキシは pip リクエストに対する軽量な代替手段として機能します。VPN のような性能オーバーヘッドなしに、依存関係をより速く効率的に管理できます。
 
 ## Common Mistakes and Best Practices
 
-When using proxies with pip, it's crucial to avoid common mistakes that could lead to security vulnerabilities. Issues such as incorrect proxy URLs or improperly formatted addresses—such as missing or incorrect HTTP/HTTPS protocols—can disrupt connections to package repositories.
+pip でプロキシを使用する際は、セキュリティ脆弱性につながり得る一般的なミスを避けることが重要です。誤ったプロキシ URL や、不適切に整形されたアドレス（HTTP/HTTPS protocol の欠落や誤りなど）は、パッケージリポジトリへの接続を妨げる可能性があります。
 
-A major security risk is hard-coding proxy credentials (e.g., usernames and passwords) in source code, scripts, or CI/CD pipeline configurations. If the code is shared or exposed, unauthorized access to the proxy may occur. Compromised credentials can lead to misuse, resulting in increased costs or potential exploitation by cyberattacks.
+大きなセキュリティリスクの一つは、プロキシ認証情報（例: username や password）をソースコード、スクリプト、または CI/CD pipeline の設定にハードコードすることです。コードが共有または露出すると、プロキシへの不正アクセスが発生する可能性があります。認証情報が侵害されると、悪用につながり、コスト増加やサイバー攻撃による潜在的な悪用の原因になります。
 
-To avoid these mistakes, it’s recommended that proxy credentials are kept secure by storing them in environment variables or encrypted configuration files rather than directly in code. Additionally, you must test proxy connectivity before using pip to ensure proper setup and avoid runtime errors. Using tools like [curl](https://curl.se/) or [ping](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ping), you can verify proxy performance before putting it into service. This enables a smoother package management experience.
+これらのミスを避けるために、プロキシ認証情報はコードに直接書き込むのではなく、環境変数や暗号化された設定ファイルに保存して安全に管理することを推奨します。さらに、pip を使用する前にプロキシ接続性をテストして、適切なセットアップであることを確認し、実行時エラーを回避する必要があります。[curl](https://curl.se/) や [ping](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ping) のようなツールを使うことで、サービス投入前にプロキシのパフォーマンスを検証できます。これにより、よりスムーズなパッケージ管理を実現できます。
 
 ## Using Bright Data Proxies
 
-Bright Data provides a range of [proxy services](https://brightdata.com/proxy-types), including residential, data centers, and mobile devices. It can help you easily create proxies for your project’s needs. Let’s create a private [residential proxy](https://brightdata.com/proxy-types/residential-proxies) that you can use with pip to access packages via a different IP address.
+Bright Data は、レジデンシャル、データセンター、モバイルデバイスなどを含む幅広い [proxy services](https://brightdata.jp/proxy-types) を提供しています。プロジェクトのニーズに合わせて、プロキシを簡単に作成できます。ここでは、pip で別の IPアドレス 経由でパッケージへアクセスできるように、private [residential proxy](https://brightdata.jp/proxy-types/residential-proxies) を作成してみましょう。
 
-Start by signing up for a free Bright Data account. Then navigate to the [user dashboard](https://brightdata.com/cp/start/).
+まず、無料の Bright Data アカウントにサインアップしてください。次に、[user dashboard](https://brightdata.jp/cp/start/) に移動します。
 
-On the side menu, click on **Proxies & Scraping**:
+サイドメニューで **Proxies & Scraping** をクリックします。
 
 ![Bright Data proxies](https://github.com/luminati-io/pip-with-proxy/blob/main/Images/Bright-Data-proxies-2048x1041.png)
 
-After the form loads, set up a new residential proxy. Using the default settings will assign you a shared IP address, which is used by multiple Bright Data users.
+フォームが読み込まれたら、新しい residential proxy を設定します。デフォルト設定を使用すると、複数の Bright Data ユーザーによって使用される共有 IPアドレス が割り当てられます。
 
 ![Creating a residential proxy](https://github.com/luminati-io/pip-with-proxy/blob/main/Images/Creating-a-residential-proxy-2048x1040.png)
 
-If you need an IP address from a specific region, you can choose the desired country during setup.
+特定の地域の IPアドレス が必要な場合は、セットアップ中に希望する国を選択できます。
 
-Once the proxy is created, you'll be redirected to a dashboard displaying the endpoint and authentication details. Be sure to note the username, password, and server address.
+プロキシが作成されると、エンドポイントと認証の詳細を表示するダッシュボードにリダイレクトされます。username、password、server address を必ず控えておいてください。
 
 ![Proxy dashboard](https://github.com/luminati-io/pip-with-proxy/blob/main/Images/Proxy-dashboard-2048x1040.png)
 
-Test their availability of the endpoint values by using the `--proxy` flag:
+`--proxy` フラグを使用して、endpoint values の可用性をテストしてください。
 
 ```bash
 $ pip install pandas \
@@ -298,8 +298,8 @@ $ pip install pandas \
     --proxy https://username:[email protected]:33335
 ```
 
-Because the Bright Data proxy uses a self-signed certificate, you can use the `trusted-host` flag to whitelist `pypi.org` and `files.pythonhosted.org` as trusted domains.
+Bright Data のプロキシは自己署名証明書を使用しているため、`trusted-host` フラグを使用して `pypi.org` と `files.pythonhosted.org` を信頼済みドメインとしてホワイトリスト登録できます。
 
 ## Conclusion
 
-Configuring a proxy for pip is simple, with multiple options like CLI flags, a pip config file, and environment variables. However, public proxies have limitations and aren't ideal for large workloads or production use. For a more reliable solution, Bright Data offers residential and [datacenter IPs](https://brightdata.com/proxy-types/datacenter-proxies), as well as fast, stable connections and advanced tools for web scraping and data collection. Sign up for free to get started.
+pip 用のプロキシ設定は、CLI フラグ、pip config file、環境変数など複数の方法があり簡単です。ただし、public proxy には制限があり、大規模なワークロードや本番利用には理想的ではありません。より信頼性の高いソリューションとして、Bright Data はレジデンシャルおよび [datacenter IPs](https://brightdata.jp/proxy-types/datacenter-proxies) を提供し、高速で安定した接続に加えて、Webスクレイピング とデータ収集のための高度なツールも提供しています。無料でサインアップして開始してください。
